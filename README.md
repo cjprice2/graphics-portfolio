@@ -1,6 +1,6 @@
 # Colin's Graphics Portfolio
 
-Live site: https://colingraphics.vercel.app
+Live site: https://cjprice2.github.io/graphics-portfolio/
 
 This repository contains a collection of interactive computer graphics exercises and projects created for CS559 – Computer Graphics at UW-Madison. Everything runs directly in the browser using standard web technologies (HTML, CSS and JavaScript).
 
