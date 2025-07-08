@@ -207,25 +207,29 @@ document.getElementById("clear").onclick = function () {
     boids.length = 0;
 };
 
-let lastTime; // will be undefined by default
+let lastTime; // undefined initially
+
 /**
- * The Actual Execution
+ * Main animation loop (frame-rate independent)
  */
 function loop(timestamp) {
-    // time step - convert to 1/60th of a second frames
-    // 1000ms / 60fps
-    const delta = (lastTime ? timestamp-lastTime : 0) * 1000.0/60.0;
+    const delta = lastTime ? (timestamp - lastTime) / 1000 : 0; // seconds since last frame
+    lastTime = timestamp;
 
-    // change directions
+    // steer using the elapsed time (if needed later)
     boids.forEach(boid => boid.steer(boids, delta));
-    let speed = Number(speedSlider.value);
-    // Move forward, bounce off edges, and set/decrement collideFrames
+
+    // slider value was tuned for 144 fps (original testing) → px/frame × 144 = px/sec
+    const speedPerSecond = Number(speedSlider.value) * 144;
+
+    // Move forward, bounce off edges, and update collide timer
     boids.forEach(function (boid) {
-        boid.x += boid.vx * speed;
-        boid.y += boid.vy * speed;
-        // Decrement collideFrames
+        boid.x += boid.vx * speedPerSecond * delta;
+        boid.y += boid.vy * speedPerSecond * delta;
+
+        // Decrement collideFrames (stored in 60 fps frames) proportionally
         if (boid.collideFrames > 0) {
-            boid.collideFrames--;
+            boid.collideFrames -= delta * 144;
         }
         // Check left/right edges
         if (boid.x < 0) {
@@ -252,7 +256,6 @@ function loop(timestamp) {
     draw();
     // and loop
     window.requestAnimationFrame(loop);
-
 }
 // start the loop with the first iteration
 window.requestAnimationFrame(loop);

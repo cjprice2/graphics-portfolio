@@ -10,21 +10,21 @@ let propRotTopLeft = 0;
 let propRotTopRight = 0;
 let propRotBottomRight = 0;
 let propRotBottomLeft = 0;
-const speedTopLeft = 0.05; // radians per frame
-const speedTopRight = 0.07;
-const speedBottomRight = 0.09;
-const speedBottomLeft = 0.11;
+const speedTopLeft = 7.2;
+const speedTopRight = 10.08;
+const speedBottomRight = 12.96;
+const speedBottomLeft = 15.84;
 
 // Global circular quadcopter orbit values
 let orbitAngle = 0;
-const orbitSpeed = 0.01; // radians per frame
+const orbitSpeed = 1.44; // radians per second (0.01 * 144)
 const orbitRadius = 100; // distance from center
 const circleCenterX = canvas.width * 0.75; // bottom right quadrant center 
 const circleCenterY = canvas.height * 0.75;
 
 // Global figure 8 quadcopter values
 let figure8Angle = 0;
-const figure8Speed = 0.01;
+const figure8Speed = 1.44; // rad/s
 const amplitudeX = 90;
 const amplitudeY = 60;
 const fig8CenterX = canvas.width * 0.25; // bottom left quadrant center 
@@ -33,7 +33,7 @@ const fig8CenterY = canvas.height * 0.75;
 // Global variables for the user-controlled quadcopter
 let userQuadX = canvas.width / 2;
 let userQuadY = canvas.height - 100;
-let userQuadSpeed = 2; // speed in pixels per frame
+let userQuadSpeed = 288; // pixels per second
 let userQuadAngle = 0; // current facing angle in radians
 // stores the latest known mouse coordinates if inside the canvas
 let mouseX = null;
@@ -47,8 +47,8 @@ let lastTime = 0;
  * The function shifts the canvas context to (x, y) and then draws the main body, arms, and propellers 
  *
  * @param {CanvasRenderingContext2D} context - The 2D context of the canvas
- * @param {number} x - The x-coordinate for the quadcopter’s center
- * @param {number} y - The y-coordinate for the quadcopter’s center
+ * @param {number} x - The x-coordinate for the quadcopter's center
+ * @param {number} y - The y-coordinate for the quadcopter's center
  * @param {string} [color="gray"] - The color of the quadcopter (default is "gray")
  * @param {number} [size=1] - Scale factor for the quadcopter (default is 1)
  */
@@ -140,8 +140,8 @@ function spawnEnemy() {
         x: Math.random() * canvas.width,
         y: -20,
         radius: 10 + 10 * Math.random(), // random size
-        vy: 0.1 + 0.03 * Math.random(), // vertical speed
-        vx: (Math.random() - 0.5) * 3, // horizontal speed
+        vy: (0.1 + 0.03 * Math.random()) * 144, // pixels per second
+        vx: (Math.random() - 0.5) * 432, // (3 * 144) pixels per second
     };
     enemies.push(enemy);
 }
@@ -162,8 +162,8 @@ function createExplosion(x, y) {
         particles.push({
             x: x,
             y: y,
-            vx: (Math.random() - 0.5) * 3,
-            vy: (Math.random() - 0.5) * 3,
+            vx: (Math.random() - 0.5) * 432,
+            vy: (Math.random() - 0.5) * 432,
             radius: 2 + Math.random() * 2,
             life: 1 // Lifetime in seconds
         });
@@ -180,8 +180,8 @@ function createExplosion(x, y) {
 function updateParticles(context, delta) {
     for (let i = particles.length - 1; i >= 0; i--) {
         const p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
+        p.x += p.vx * delta;
+        p.y += p.vy * delta;
         // Decrease life based on time
         p.life -= delta;
         
@@ -207,11 +207,11 @@ function updateParticles(context, delta) {
  * 
  * @param {CanvasRenderingContext2D} context - The 2D drawing context of the canvas
  */
-function updateEnemies(context) {
+function updateEnemies(context, delta) {
     for (let i = enemies.length - 1; i >= 0; i--) {
         const enemy = enemies[i];
-        enemy.y += enemy.vy; 
-        enemy.x += enemy.vx;
+        enemy.y += enemy.vy * delta; 
+        enemy.x += enemy.vx * delta;
         if (enemy.x < enemy.radius || enemy.x > canvas.width - enemy.radius) {
             enemy.vx = -enemy.vx;
         }
@@ -306,7 +306,7 @@ canvas.addEventListener('click', (e) => {
     const startY = userQuadY + frontOffsetY;
     
     // Projectile speed in pixels per frame
-    const projectileSpeed = 5;
+    const projectileSpeed = 720; // pixels per second
     // The velocity is in the same direction as the front, so use the same offset normalized.
     const vx = projectileSpeed * Math.sin(userQuadAngle);
     const vy = -projectileSpeed * Math.cos(userQuadAngle);
@@ -341,8 +341,8 @@ function loop(timestamp) {
     for (let i = projectiles.length - 1; i >= 0; i--) {
         const p = projectiles[i];
         // Update position
-        p.x += p.vx;
-        p.y += p.vy;
+        p.x += p.vx * delta;
+        p.y += p.vy * delta;
         // Draw projectile (a white dot)
         context.beginPath();
         context.arc(p.x, p.y, 3, 0, 2 * Math.PI);
@@ -367,12 +367,12 @@ function loop(timestamp) {
     }
 
     // Update and draw enemies and particles
-    updateEnemies(context);
+    updateEnemies(context, delta);
     updateParticles(context, delta);
 
     // Circular orbit quadcopter 
     // Update orbit angle and calculate new position for circular motion quadcopter
-    orbitAngle += orbitSpeed;
+    orbitAngle += orbitSpeed * delta;
     const orbitX = circleCenterX + orbitRadius * Math.cos(orbitAngle);
     const orbitY = circleCenterY + orbitRadius * Math.sin(orbitAngle);
     
@@ -385,7 +385,7 @@ function loop(timestamp) {
     
     // Figure 8 quadcopter
     // Update figure 8 angle and calculate new position for figure 8 motion quadcopter
-    figure8Angle += figure8Speed;
+    figure8Angle += figure8Speed * delta;
     const figure8X = fig8CenterX  + amplitudeX * Math.sin(figure8Angle);
     const figure8Y = fig8CenterY + amplitudeY * Math.sin(2 * figure8Angle);
 
@@ -403,16 +403,16 @@ function loop(timestamp) {
     
     // Update user controlled quadcopter position based on WASD
     if (keysPressed['w']) {
-        userQuadY -= userQuadSpeed;
+        userQuadY -= userQuadSpeed * delta;
     }
     if (keysPressed['s']) {
-        userQuadY += userQuadSpeed;
+        userQuadY += userQuadSpeed * delta;
     }
     if (keysPressed['a']) {
-        userQuadX -= userQuadSpeed;
+        userQuadX -= userQuadSpeed * delta;
     }
     if (keysPressed['d']) {
-        userQuadX += userQuadSpeed;
+        userQuadX += userQuadSpeed * delta;
     }
     // Wrap user controlled quadcopter around the canvas
     if (userQuadX < 0) {
@@ -444,10 +444,10 @@ function loop(timestamp) {
     context.restore();
     
     // Update propeller rotations with different speeds
-    propRotTopLeft += speedTopLeft;
-    propRotTopRight += speedTopRight;
-    propRotBottomRight += speedBottomRight;
-    propRotBottomLeft += speedBottomLeft;
+    propRotTopLeft += speedTopLeft * delta;
+    propRotTopRight += speedTopRight * delta;
+    propRotBottomRight += speedBottomRight * delta;
+    propRotBottomLeft += speedBottomLeft * delta;
 
     // Draw the score
     context.fillStyle = "white";
