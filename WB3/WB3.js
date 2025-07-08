@@ -278,6 +278,24 @@ window.addEventListener('keyup', (e) => {
     keysPressed[e.key.toLowerCase()] = false;
 });
 
+// NEW: utility to reset stuck movement keys and listeners to invoke it
+function clearMovementKeys() {
+    for (const key in keysPressed) {
+        if (Object.prototype.hasOwnProperty.call(keysPressed, key)) {
+            keysPressed[key] = false;
+        }
+    }
+}
+
+// Prevent default browser context menu on right-click and clear keys
+window.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+    clearMovementKeys();
+});
+
+// If the window loses focus (e.g., context menu, alt-tab), also clear movement keys
+window.addEventListener('blur', clearMovementKeys);
+
 // Update mouse position when it moves over the canvas
 canvas.addEventListener('mousemove', (e) => {
     const rect = canvas.getBoundingClientRect();
