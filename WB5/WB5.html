@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Workbook 5 - Colin's Graphics Portfolio</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="wb-page">
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Portfolio</a>
+        <div class="header">
+            <div class="page-header">
+                <h1>Workbook 5</h1>
+                <p>Graphics Projects</p>
+            </div>
+        </div>
+        <div style="padding: 20px;">
+            <div class="project-section">
+                <div class="project-title-large">Sunset Beach Picture to Learn About Bezier Curves</div>
+                <div class="project-description-large">
+                    Demonstration of Bézier curves and continuity along a stylized sunset beach scene:
+                    <ul class="desc-list">
+                        <li><strong>Segments 1–2 of the sand:</strong> slopes match exactly (20,0) -> <em>C1 continuity</em> (position &amp; first derivative agree).</li>
+                        <li><strong>Segments 2–3 of the water waves:</strong> slope vectors (10,10) and (20,20) are parallel but differ in magnitude -> <em>G1 continuity</em> (tangent direction matches).</li>
+                    </ul>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="canvas1" width="400" height="400"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>© 2025 Colin's Computer Graphics Portfolio | Built with HTML & CSS</p>
+        </div>
+    </div>
+    <script type="module" src="WB5.js"></script>
+</body>
+</html> 

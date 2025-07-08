@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Workbook 6 - Colin's Graphics Portfolio</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="wb-page">
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Portfolio</a>
+        <div class="header">
+            <div class="page-header">
+                <h1>Workbook 6</h1>
+                <p>Graphics Projects</p>
+            </div>
+        </div>
+        <div style="padding: 20px;">
+            <div class="project-section">
+                <div class="project-title-large">Primitive Snowman</div>
+                <div class="project-description-large">
+                    A 3D snowman made from primitives.
+                    <br>
+                    <ul class="desc-list">
+                        <li>Built with Three.js and the CS559 Framework</li>
+                        <li>Snowman assembled from spheres, cylinders, and a cone for the nose.</li>
+                        <li>Ground plane, ambient light, and directional lighting.</li>
+                        <li>Animated bounce and circular motion.</li>
+                        <li>Use left mouse to rotate the camera, use right mouse to move the camera, and use the scroll wheel to zoom in and out.</li>
+                    </ul>
+                </div>
+                <div class="canvas-container">
+                    <div id="canvas1" width="500" height="500"></div>
+                </div>
+            </div>
+            <div class="project-section">
+                <div class="project-title-large">Object Museum</div>
+                <div class="project-description-large">
+                    A museum of 3D objects.
+                    <br>
+                    <ul class="desc-list">
+                        <li>Built with Three.js and the CS559 Framework</li>
+                        <li>SpongeBob object assembled from spheres, boxes, and cylinders.</li>
+                        <li>Other objects are imported from OBJ files.</li>
+                        <li>Camera controls: left-mouse drag = orbit, right-mouse drag = pan, scroll = zoom.</li>
+                        <li>Use the buttons to switch between cameras.</li>
+                    </ul>
+                </div>
+                <div class="canvas-container">
+                    <div id="canvas2" width="670" height="500"></div>
+                    <div id="button_area">
+                        <button type="button" id="main_cam">Main Camera</button>
+                        <button type="button" id="cam_1">Camera 1</button>
+                        <button type="button" id="cam_2">Camera 2</button>
+                        <button type="button" id="cam_3">Camera 3</button>
+                        <button type="button" id="cam_4">Camera 4</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>© 2025 Colin's Computer Graphics Portfolio | Built with HTML & CSS</p>
+        </div>
+    </div>
+    <script type="module" src="WB6a.js"></script>
+    <script type="module" src="WB6b.js"></script>
+</body>
+</html> 

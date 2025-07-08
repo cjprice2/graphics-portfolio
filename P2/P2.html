@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Project 2 - Colin's Graphics Portfolio</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="wb-page">
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Portfolio</a>
+        <div class="header">
+            <div class="page-header">
+                <h1>Project 2</h1>
+                <p>Graphics Projects</p>
+            </div>
+        </div>
+        <div style="padding: 20px;">
+            <div class="project-section">
+                <div class="project-title-large">Luigi Circuit: Interactive Mario Kart Scene</div>
+                <div class="project-description-large">
+                    A full 3D recreation of the Luigi Circuit track from Mario Kart Wii, complete with karts, boost panels, waving finish banner and animated environment.
+                    <br>
+                    <ul class="desc-list">
+                        <li>Built with Three.js and the CS559 Framework.</li>
+                        <li>Two rideable vehicles – Flame Runner &amp; Wild Wing – follow the custom spline track. Use the UI under the scene to <em>Drive</em> either vehicle and use the dropdown above of it to either <em>Follow</em> or <em>Drive</em> the vehicle. Fly Camera is unfortunately not working currently.</li>
+                        <li>Boost panels use a custom GLSL shader that animates a boost pattern and temporarily speeds up karts on contact.</li>
+                        <li>Camera controls: left-mouse drag = orbit, right-mouse drag = pan, scroll = zoom.</li>
+                        <li>Theme assets: 
+                            <ul>
+                                <li>Track asphalt texture – PolyHaven (<a href="https://polyhaven.com/a/asphalt_track" target="_blank">link</a>)</li>
+                                <li>Grass texture – DeviantArt (<a href="https://www.deviantart.com/hhh316/art/Dark-Green-grass-ground-land-dirt-aerial-top-seaml-445047560" target="_blank">link</a>)</li>
+                                <li>Concrete &amp; sand textures – PolyHaven</li>
+                                <li>Wild Wing kart GLB – Sketchfab (<a href="https://skfb.ly/puUFQ" target="_blank">CC-BY 4.0</a>)</li>
+                                <li>Luigi model – Sketchfab (<a href="https://skfb.ly/o7JV8" target="_blank">CC-BY 4.0</a>)</li>
+                                <li>Skybox – PolyHaven (<a href="https://polyhaven.com/a/kloofendal_48d_partly_cloudy_puresky" target="_blank">link</a>)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="canvas-container">
+                    <div id="canvas1" width="800" height="600"></div>
+                </div>
+                <div id="p2-controls" class="controls-row"></div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>© 2025 Colin's Computer Graphics Portfolio | Built with HTML & CSS</p>
+        </div>
+    </div>
+    <script type="module" src="P2.js"></script>
+</body>
+</html> 

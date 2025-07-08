@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Workbook 4 - Colin's Graphics Portfolio</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="wb-page">
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Portfolio</a>
+        <div class="header">
+            <div class="page-header">
+                <h1>Workbook 4</h1>
+                <p>Graphics Projects</p>
+            </div>
+        </div>
+        <div style="padding: 20px;">
+            <div class="project-section">
+                <div class="project-title-large">Boids</div>
+                <div class="project-description-large">
+                    Interactive boid swarm simulation: watch tiny triangular insects walk, bounce, and swarm across the canvas.
+                    <br>
+                    <ul class="desc-list">
+                        <li><strong>Add</strong> button spawns ten new boids at random positions &amp; orientations.</li>
+                        <li><strong>Clear</strong> button removes all boids for a fresh start.</li>
+                        <li>Boids maintain constant speed using unit-length velocity vectors.</li>
+                        <li>Edges are treated as walls—boids bounce off rather than wrapping around.</li>
+                        <li>Collisions with walls or other boids trigger a brief color flash.</li>
+                        <li>Each boid is drawn with a body and four animated legs that swing in mirrored pairs to mimic walking.</li>
+                        <li>Speed slider adjusts the global pace of the swarm in real-time.</li>
+                        <li>Built with a Boid class and the HTML5 Canvas 2D API.</li>
+                    </ul>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="canvas1" width="600" height="600"></canvas>
+                </div>
+                <div class="controls">
+                    <input type="range" width="100px" min="0" max="10" step=".2" value="3" id="speed" />
+                    <button id="add">Add 10</button>
+                    <button id="clear">Clear</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>© 2025 Colin's Computer Graphics Portfolio | Built with HTML & CSS</p>
+        </div>
+    </div>
+    <script type="module" src="WB4.js"></script>
+</body>
+</html> 

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Project 1 - Colin's Graphics Portfolio</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="wb-page">
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Portfolio</a>
+        <div class="header">
+            <div class="page-header">
+                <h1>Project 1</h1>
+                <p>Graphics Projects</p>
+            </div>
+        </div>
+        <div style="padding: 20px;">
+            <div class="project-section">
+                <div class="project-title-large">Train Project</div>
+                <div class="project-description-large">
+                    This interactive railroad simulation demonstrates Catmull-Rom splines (converted to cubic Bézier curves) to define a closed track.
+                    <ul class="desc-list">
+                        <li>Drag the <strong>black control points</strong> on the canvas to reshape the track in real time.</li>
+                        <li><strong>Shift + Left-click</strong> anywhere on the canvas to add a new control point, and <strong>Ctrl + Left-click</strong> on an existing point to remove it.</li>
+                        <li>Use the <strong>slider</strong> to scrub the train's position along the track.</li>
+                        <li>Check <strong>go</strong> to animate the train; uncheck to pause.</li>
+                        <li>Keep the <strong>arc-length</strong> option enabled for constant speed; disable it for speed that varies with curvature.</li>
+                        <li>Toggle <strong>simple track</strong> to switch between a single-line spline and a full set of parallel rails with ties.</li>
+                    </ul>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="canvas1" width="600" height="600"></canvas>
+                </div>
+            </div>
+          
+        </div>
+        <div class="footer">
+            <p>© 2025 Colin's Computer Graphics Portfolio | Built with HTML & CSS</p>
+        </div>
+    </div>
+    <script type="module" src="P1.js"></script>
+</body>
+</html> 

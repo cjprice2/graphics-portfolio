@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Workbook 9 - Colin's Graphics Portfolio</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="wb-page">
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Portfolio</a>
+        <div class="header">
+            <div class="page-header">
+                <h1>Workbook 9</h1>
+                <p>Graphics Projects</p>
+            </div>
+        </div>
+        <div style="padding: 20px;">
+            <div class="project-section">
+                <div class="project-title-large">Multi-Pass Rendering Showcase</div>
+                <div class="project-description-large">
+                    A demonstration of dynamic environment mapping and render-to-texture effects.
+                    <br>
+                    <ul class="desc-list">
+                        <li>Built with Three.js, the CS559 Framework, and multi-pass rendering.</li>
+                        <li>Dynamic cube-maps generate real-time reflections on a sphere and a cube.</li>
+                        <li>Picture-in-picture video screen shows the view from a camera mounted on a moving torus knot.</li>
+                        <li>Scene background provided by a skybox generated from a forest cube-map texture.</li>
+                        <li>Animated torus, bobbing reflective cube, and dancing Funky Kong expose changing reflections each frame.</li>
+                        <li>Camera controls: left-mouse drag = orbit, right-mouse drag = pan, scroll = zoom.</li>
+                    </ul>
+                </div>
+                <div class="canvas-container">
+                    <div id="canvas1" width="600" height="400"></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>© 2025 Colin's Computer Graphics Portfolio | Built with HTML & CSS</p>
+        </div>
+    </div>
+    <script type="module" src="WB9.js"></script>
+</body>
+</html> 

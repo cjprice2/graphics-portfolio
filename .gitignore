@@ -1,0 +1,13 @@
+# Editor settings
+.vscode/*
+!.vscode/settings.json
+
+# OS / misc
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Source-map & temp
+*.map
+*.tmp

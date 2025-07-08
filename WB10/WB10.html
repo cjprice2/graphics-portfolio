@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Workbook 10 - Colin's Graphics Portfolio</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="wb-page">
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Portfolio</a>
+        <div class="header">
+            <div class="page-header">
+                <h1>Workbook 10</h1>
+                <p>Graphics Projects</p>
+            </div>
+        </div>
+        <div style="padding: 20px;">
+            <div class="project-section">
+                <div class="project-title-large">Dark Matter Displacement Shader</div>
+                <div class="project-description-large">
+                    Vertex-displacement and lighting driven by a COD "Dark Matter" camo texture.
+                    <br>
+                    <ul class="desc-list">
+                        <li>Texture brightness pushes vertices outward, creating a procedural bump.</li>
+                        <li>Displacement amount is controlled in real-time with the slider below.</li>
+                        <li>Sphere spins so you can inspect the parallax of the bumps.</li>
+                        <li>Custom GLSL vertex &amp; fragment shaders perform the displacement and lighting.</li>
+                        <li>Simple view-space diffuse + ambient lighting moves with the camera.</li>
+                        <li>Texture sourced from "Dark Matter" camo from Plutonium Modding Forum (<a href="https://forum.plutonium.pw/topic/31551/paying-4-atomic-bo2-zombies" target="_blank">link</a>).</li>
+                        <li>Use left mouse to rotate the camera, use right mouse to move the camera, and use the scroll wheel to zoom in and out.</li>
+                        <li>Built with Three.js and the CS559 Framework.</li>
+                    </ul>
+                </div>
+                <div class="canvas-container">
+                    <div id="canvas1" width="600" height="400"></div>
+                </div>
+                <div id="shader-controls" class="controls-row">
+                    <label style="color:white;">Displacement Scale:
+                        <input type="range" id="displacementSlider" min="0" max="1" step="0.01" value="0.2">
+                        <span id="displacementValue">0.20</span>
+                    </label>
+                </div>
+            </div>
+            <div class="project-section">
+                <div class="project-title-large">Animated Wave Interference Shader</div>
+                <div class="project-description-large">
+                    Fragment shader from ShaderFrog (<a href="https://shaderfrog.com/app/view/2311" target="_blank">#2311</a>) tweaked for this scene.
+                    <br>
+                    <ul class="desc-list">
+                        <li>Pure GLSL fragment and vertex shaders adapted from ShaderFrog.</li>
+                        <li>Creates a hypnotic green on black pattern using layered sine waves.</li>
+                        <li>Time uniform offsets UVs each frame to animate the pattern.</li>
+                        <li>Coordinates are rotated &amp; shifted between layers to form interference bands.</li>
+                        <li>Final value is smoothed then mapped to color for a glow effect.</li>
+                        <li>Applied to both a sphere and a flat sign for comparison.</li>
+                        <li>Camera controls: left-mouse drag = orbit, right-mouse drag = pan, scroll = zoom.</li>
+                        <li>Built with Three.js and the CS559 Framework.</li>
+                    </ul>
+                </div>
+                <div class="canvas-container">
+                    <div id="canvas2" width="600" height="400"></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>© 2025 Colin's Computer Graphics Portfolio | Built with HTML & CSS</p>
+        </div>
+    </div>
+    <script type="module" src="WB10a.js"></script>
+    <script type="module" src="WB10b.js"></script>
+</body>
+</html> 

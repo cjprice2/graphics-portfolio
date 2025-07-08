@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Workbook 7 - Colin's Graphics Portfolio</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="wb-page">
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Portfolio</a>
+        <div class="header">
+            <div class="page-header">
+                <h1>Workbook 7</h1>
+                <p>Graphics Projects</p>
+            </div>
+        </div>
+        <div style="padding: 20px;">
+            <div class="project-section">
+                <div class="project-title-large">3D Aircrafts</div>
+                <div class="project-description-large">3D aircrafts and radars made from primitives and lathes.
+                    <br>
+                    <ul class="desc-list">
+                        <li>Built with Three.js and the CS559 Framework.</li>
+                        <li>Aircrafts assembled from cylinders and boxes.</li>
+                        <li>Radars assembled from spheres, cylinders, and lathes.</li>
+                        <li>Ground plane, ambient light, and directional lighting.</li>
+                        <li>Camera controls: left-mouse drag = orbit, right-mouse drag = pan, scroll = zoom.</li>
+                    </ul></div>
+                <div class="canvas-container">
+                    <div id="canvas1" width="600" height="400"></div>
+                </div>
+            </div>
+            <div class="project-section">
+                <div class="project-title-large">3D Construction Site</div>
+                <div class="project-description-large">3D construction site with articulated motion made from primitives extruded geometry.
+                    <br>
+                    <ul class="desc-list">
+                        <li>Built with Three.js and the CS559 Framework.</li>
+                        <li>Construction site assembled from cylinders and boxes and some extruded geometry.</li>
+                        <li>Use left mouse to rotate the camera, use right mouse to move the camera, and use the scroll wheel to zoom in and out.</li>
+                        <li>Use the sliders to experiment with the articulated motion!</li>
+                    </ul></div>
+                <div class="canvas-container">
+                    <div id="canvas2" width="600" height="400"></div>
+                </div>
+                <div id="construction-controls" class="controls-row"></div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>© 2025 Colin's Computer Graphics Portfolio | Built with HTML & CSS</p>
+        </div>
+    </div>
+    <script type="module" src="WB7a.js"></script>
+    <script type="module" src="WB7b.js"></script>
+</body>
+</html> 
